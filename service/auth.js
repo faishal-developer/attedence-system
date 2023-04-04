@@ -19,12 +19,7 @@ const loginService=async({email,password})=>{
 
 const registrationService=async({name,email,password})=>{
     let user = await findUserByProperty('email',email);
-    console.log('user',user);
-    if (user) {
-        const error = new Error("User already exist");
-        error.status = 400;
-        throw error;
-    }
+    if (user) throw error("User already exist",400);
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
      return createNewUser({email,name,password:hash});
