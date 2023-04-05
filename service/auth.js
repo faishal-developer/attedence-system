@@ -17,12 +17,12 @@ const loginService=async({email,password})=>{
 
 }
 
-const registrationService=async({name,email,password})=>{
+const registrationService = async ({ name, email, password, roles, accountStatus })=>{
     let user = await findUserByProperty('email',email);
     if (user) throw error("User already exist",400);
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-     return createNewUser({email,name,password:hash});
+     return createNewUser({email,name,password:hash,roles,accountStatus});
 
 }
 
