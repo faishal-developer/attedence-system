@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose')
 
 const StudentAttendenceSchema = new Schema({
-    createdAt: Date,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -10,7 +9,7 @@ const StudentAttendenceSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'AdminAttendence'
     }
-})
+},{timestamps:true})
 
 const AdminAttendence = model('StudentAttendence', StudentAttendenceSchema)
 module.exports = AdminAttendence

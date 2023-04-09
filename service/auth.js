@@ -12,7 +12,7 @@ const loginService=async({email,password})=>{
     
     delete user._doc.password;
 
-    const token = jwt.sign(user._doc, 'secret-key', { expiresIn: '2h' });
+    const token = jwt.sign(user._doc, 'secret-key', { expiresIn: '20h' });
     return token;
 
 }
